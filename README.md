@@ -4,9 +4,7 @@
 
 ## Preview
 
-[![SB Admin Preview](https://startbootstrap.com/assets/img/templates/sb-admin.jpg)](https://blackrockdigital.github.io/startbootstrap-sb-admin/)
-
-**[View Live Preview](https://blackrockdigital.github.io/startbootstrap-sb-admin/)**
+**[View Live Preview](https://punikaamorn.github.io/SPK-noodle-factory/login)**
 
 ## Status
 
