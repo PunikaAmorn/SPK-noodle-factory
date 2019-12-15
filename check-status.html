@@ -366,7 +366,7 @@
 
       </div>
       <!-- container-fluid -->
-      <div data-include="footer"></div>
+      <div data-include="common/footer.html"></div>
 
     </div>
     <!-- /.content-wrapper -->
@@ -401,15 +401,10 @@
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script>
-    $(function(){
-      var includes = $('[data-include]');
-      jQuery.each(includes, function(){
-        var file = 'common/' + $(this).data('include') + '.html';
-        $(this).load(file);
-      });
-    });
-  </script>
+  
+  <!-- Footer Header -->
+  <script src="js/csi.js"></script>
+
 
   <!-- Core plugin JavaScript-->
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
