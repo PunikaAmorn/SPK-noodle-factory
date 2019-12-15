@@ -1,6 +1,4 @@
-# [Start Bootstrap - SB Admin](https://startbootstrap.com/template-overviews/sb-admin/)
-
-[SB Admin](http://startbootstrap.com/template-overviews/sb-admin/) is an open source, admin dashboard template for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/).
+# [SPK Noodle Factiry:Final Project AS7201](https://punikaamorn.github.io/SPK-noodle-factory/login)
 
 ## Preview
 
