@@ -37,22 +37,4 @@
     event.preventDefault();
   });
 
-  
-  jQuery(window).on('load', function() {
-    setTimeout(() => {
-      //Select nav page	 
-      var pathname = "";
-      var pathloc = $(location).attr('pathname');
-      pathname = pathloc.split('/')[1];
-      pathname = pathname.split('.html')[0];
-      if( pathloc.includes("order-detail")){
-        pathname = 'check-status';
-      }
-      var id = "#"+pathname+"-nav";
-      var page = $(id);
-      page.addClass("active");
-     }, 300)
-
-  });
-
 })(jQuery); // End of use strict
