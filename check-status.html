@@ -20,20 +20,6 @@
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
 
-  
-  <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script>
-    $(function(){
-      var includes = $('[data-include]');
-      jQuery.each(includes, function(){
-        var file = 'common/' + $(this).data('include') + '.html';
-        $(this).load(file);
-      });
-    });
-  </script>
-
 </head>
 
 <body id="page-top">
@@ -379,7 +365,7 @@
         </div>
 
       </div>
-      <!-- /.container-fluid -->
+      <!-- container-fluid -->
       <div data-include="footer"></div>
 
     </div>
@@ -412,6 +398,18 @@
     </div>
   </div>
 
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script>
+    $(function(){
+      var includes = $('[data-include]');
+      jQuery.each(includes, function(){
+        var file = 'common/' + $(this).data('include') + '.html';
+        $(this).load(file);
+      });
+    });
+  </script>
 
   <!-- Core plugin JavaScript-->
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
