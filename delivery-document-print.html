@@ -1,0 +1,97 @@
+<html>
+    <!-- Page level plugin CSS-->
+    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="css/delivery-print.css" rel="stylesheet" type="text/css"></link href> 
+    <!-- Calendar jquery -->  
+    <link rel="stylesheet" type="text/css" href="vendor/datetimepicker/jquery.datetimepicker.min.css"/>
+  
+    <body>
+        <nav>
+            <button style='margin-right: 15px;' onclick="print()">Print</button>
+            <button>Save to PDF</button>
+        </nav>
+        <page size="A5" layout="landscape">
+            <div class="container">
+                <div class="row">
+                    <div class="col-2 pr-0"><logo>SPK</logo></div>
+                    <div class="col-6 pl-0">
+                        บริษัท เอส.พี.เค จำกัด
+                        <br>
+                        <p class="small">
+                            โรงงานผลิตเส้น ตั้งอยู่ที่ 00 ตำบล ตำบล อำเภอ อำเภอ จังหวัด จังหวัด 00000 
+                            (000-0000-000)
+                        </p>
+                    </div>
+                    <div class="col-4 text-right">หมายเลขคำสั่งซื้อ <h5>#12620005</h5></div>
+                </div>
+                <div class="row">
+                    <div class="col-7">
+                        <div class="row">
+                            <div class="col-md-3 title">ชื่อลูกค้า:</div> 
+                            <div class="col-md-9">สมชาย สมานฉันท์</div>
+                            <div class="col-md-3 title">ที่อยู่:</div> 
+                            <div class="col-md-9">XXXXXXXXXXXXXXXXXXXXXXX</div>
+                        </div>
+                    </div>
+                    <div class="col-5">
+                        <div class="row">
+                            <div class="col-md-6 title text-right">วันที่ส่งออก:</div> 
+                            <div class="col-md-6"><input type="text" class="date  form-control text-right datepicker" id="nowdate"></div>
+                            <div class="col-md-6 title text-right">วันที่ส่งมอบ:</div> 
+                            <div class="col-md-6 text-right pr-4">28/12/2019</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table table-bordered">
+                            <thead>
+                                <th width='70%'>รายการ</th>
+                                <th width="30%">จำนวน(ห่อ)</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>เส้นเล็กสูตร2</td>
+                                    <td>10000</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td class="title text-center">รวม</td>
+                                    <td>10000</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+                <div class="row justify-content-end">
+                    <div class="col-5 sign">
+                        <div>ลงชื่อผู้ตรวจรับสินค้า</div>
+                        <div class="underline"></div>
+                    </div>
+                </div>
+            </div>
+        </page>
+
+    </body>
+
+  <!-- Calendar -->
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="vendor/datetimepicker/jquery.datetimepicker.full.js"></script>
+    
+  <script>
+      
+    var dateNow = new Date();
+    $(".datepicker").datetimepicker({
+        format:'d/m/Y',
+        timepicker:true,
+        datepicker:true,
+        defaultDate:new Date()
+    });
+
+
+    function print(){
+        window.print();
+    }
+    </script>
+</html>
