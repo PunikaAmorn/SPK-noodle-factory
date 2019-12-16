@@ -43,6 +43,7 @@ page[size="A5"][layout="landscape"] {
 
   input{
       border: 0px solid #ffffff !important;
+      font-size: 1.2rem !important;
   }
 
   .table{
@@ -107,7 +108,7 @@ logo{
 }
 
 .table th, .table td {
-    padding: 0.3rem 15px;
+    padding: 5px 15px;
 }
 .table td:nth-child(2){
     text-align: right;
