@@ -94,80 +94,117 @@
           <li class="breadcrumb-item">
             <a href="check-status.html">การจัดการการผลิต</a>
           </li>
-          <li class="breadcrumb-item active">กำหนดวัตถุดิบ</li>
+          <li class="breadcrumb-item active">
+            <a href="determine-material.html">กำหนดวัตถุดิบ</a>
+          </li>
+          <li class="breadcrumb-item active">กำหนดสูตรและคำนวนวัตถุดิบ</li>
         </ol>
 
         <!-- Page Content -->
-        <h1>การกำหนดวัตถุดิบ</h1>
+        <h1>กำหนดสูตรและคำนวนวัตถุดิบ</h1>
         <hr>
-        <p>เลือกที่หมายเลขคำสั่งซื้อ เพื่อทำการกำหนดสูตร และปริมาณที่ต้องการผลิต เพื่อกำหนดวัตถุดิบที่ต้องใช้ในคำสั่งซื้อนั้น </p>
+        <p>ใส่ข้อมูลของ</p>
 
 
         <!-- DataTables Example -->
-        <div class="card mb-3">
-          <div class="card-header">
-            <i class="fas fa-table"></i>
-            ตรวจสอบสถานะการผลิต</div>
+        <div id="determine-material-report" class="card mb-3">
+          <div class="card-header d-flex">
+            <div class="col-6">
+              <i class="fas fa-table"></i>
+              กำหนดรายละเอียดการผลิต
+            </div>
+            <!-- <div class="col-6 text-right">              
+              <div id="editor"></div>
+              <button id="cmd">Save report to pdf</button>
+            </div> -->
+          </div>
           <div class="card-body">
-            <div class="table-responsive">
-              <table class="table table-bordered" data-order='[[ 0, "desc" ]]' id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                  <tr>
-                    <th>วันที่จัดส่ง</th>
-                    <th>หมายเลขคำสั่งซื้อ</th>
-                    <th>สถานะ</th>
-                    <th>สูตรที่ใช้</th>
-                    <th>จำนวนสั่งซื้อ</th>
-                    <th>ที่ต้องผลิต</th>
-                  </tr>
-                </thead>
-                <tfoot>
-                  <tr>
-                    <th>วันที่จัดส่ง</th>
-                    <th>หมายเลขคำสั่งซื้อ</th>
-                    <th>สถานะ</th>
-                    <th>สูตรที่ใช้</th>
-                    <th>จำนวนสั่งซื้อ</th>
-                    <th>ที่ต้องผลิต</th>
-                  </tr>
-                </tfoot>
-                <tbody>                  
-                  <tr>               
-                    <td>20/12/2562</td>     
-                    <td><a href="determine-material-edit.html" target="_blank">12620013</a></td>
-                    <td><span class="badge badge-danger">ออเดอร์ใหม่</span></td>
-                    <td>-</td>
-                    <td>30000</td>
-                    <td>-</td>
-                  </tr>
-                  <tr>            
-                    <td>23/12/2562</td>      
-                    <td><a href="determine-material-edit.html" target="_blank">12620012</a></td>
-                    <td><span class="badge badge-danger">ออเดอร์ใหม่</span></td>
-                    <td>-</td>
-                    <td>50000</td>
-                    <td>-</td>
-                  <tr>              
-                    <td>15/12/2562</td>      
-                    <td><a href="determine-material-edit.html" target="_blank">12620011</a></td>
-                    <td><span class="badge badge-danger">ออเดอร์ใหม่</span></td>
-                    <td>MD3</td>
-                    <td>3000</td>
-                    <td>3003</td>
-                  </tr>
-                  <tr>       
-                    <td>15/12/2562</td>       
-                    <td><a href="determine-material-edit.html" target="_blank">12620010</a></td>
-                    <td><span class="badge badge-danger">ออเดอร์ใหม่</span></td>
-                    <td>SN2</td>
-                    <td>5000</td>
-                    <td>5005</td>
-                  </tr>
-                </tbody>
-              </table>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="row detail">
+                  <div class="col-md-4 title text-right">หมายเลขคำสั่งซื้อ:</div> 
+                  <div class="col-md-8">12620013</div>
+                  <div class="col-md-4 title text-right">กำหนดส่ง:</div> 
+                  <div class="col-md-8">20/12/62</div>
+                  <div class="col-md-4 title text-right">ชื่อ-สกุล:</div>
+                  <div class="col-md-8"> สมชาย สมานฉันท์</div>
+                  <div class="col-md-4 title text-right">ที่อยู่การจัดส่ง:</div> 
+                  <div class="col-md-8">XXXXXXXXXXXXXXXXXXXXXXX</div>
+                  <div class="col-md-4 title text-right">รายการสั่งซื้อ:</div> 
+                  <div class="col-md-8">เส้นเล็กสูตร2</div>
+                  <div class="col-md-4 title text-right">จำนวน:</div> 
+                  <div class="col-md-8">30000 ห่อ</div>
+                  <div class="col-md-4 title text-right">สูตรที่ใช้:</div> 
+                  <div class="col-md-8">
+                    <select class="form-control width-150">
+                      <option value="sn0">SN0</option>
+                      <option value="sn1">SN1</option>
+                      <option value="sn2" selected>SN2</option>                  
+                      <option value="sn3">SN3</option>     
+                      <option value="md1">MD1</option>
+                      <option value="md2">MD2</option>                  
+                      <option value="md3">MD3</option>                  
+                      <option value="lg1">LG1</option>               
+                      <option value="lg2">LG2</option>               
+                      <option value="lg3">LG3</option>               
+                      <option value="lg4">LG4</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4 title text-right">จำนวนที่ต้องผลิต:</div> 
+                  <div class="col-md-8"><input type="number" class="form-control width-150" id="total-material" value="30030"></div>
+                </div>
+              </div>
+              
+              <div class="col-md-6 border-1">
+                <div class="col-md-12 title"><h5>วัตถุดิบที่ต้องใช้ทั้งหมด</h5></div>                 
+                <hr/>
+                <div class="col-md-12">
+                  <table width="100%">
+                    <thead>
+                      <th>วัตถุดิบ</th>
+                      <th>จำนวน(kg)</th>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>ข้าวสาลี</td>
+                        <td>150</td>
+                      </tr>
+                      <tr>
+                        <td>ข้าวไรซ์เบอรี่</td>
+                        <td>30</td>
+                      </tr>
+                      <tr>
+                        <td>น้ำ</td>
+                        <td>80</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>                 
+              </div> 
+              <div class="col-12 mt-3">
+                <div class="col-md-12 title"><h5>อัตราส่วนและวิธีการทำ</h5></div>   
+                <hr/>
+                <div class="col-md-12">
+                  <ul>
+                    <li>......... ...</li>
+                    <li>......... ...</li>
+                    <li>......... ...</li>
+                    <li>......... ...</li>
+                  </ul>
+                </div> 
+                <div class="col-md-12">
+                  <ol >
+                    <li>..............</li>
+                    <li>..............</li>
+                    <li>..............</li>
+                    <li>..............</li>
+                    <li>..............</li>
+                    <li>..............</li>
+                  </ol>
+                </div> 
+              </div>
             </div>
           </div>
-          <!-- <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div> -->
         </div>
       </div>
       <!-- /.container-fluid -->
