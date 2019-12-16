@@ -441,6 +441,11 @@ small,
   font-weight: 400;
 }
 
+.font-size-30 {
+  font-size: 30px;
+  font-weight: 400;
+}
+
 mark,
 .mark {
   padding: 0.2em;
@@ -572,12 +577,26 @@ pre code {
   padding: 5px;
 }
 
+.border-gray-1{
+  border: 1px solid #ced4da;
+  border-radius: 3px;
+  padding: 8px 5% 8px 0px;
+}
+
 .width-150{
   max-width:200px ;
 }
 
 .detail div{
   margin-top: 5px;
+}
+
+.green{
+  color: green;
+} 
+
+.hover-gray:hover{
+  color: gray;
 }
 
 @media (min-width: 576px) {
