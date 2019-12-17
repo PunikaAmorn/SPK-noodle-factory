@@ -18,7 +18,7 @@ page {
 page[size="A5"][layout="landscape"] {
   width: 21cm;
   height: 14.8cm;  
-  padding: 15px;
+  padding: 8px;
 }
 
 @media print {
@@ -29,11 +29,12 @@ page[size="A5"][layout="landscape"] {
     background: #ffffff; 
   }
   
+
   @page {  
     size: a5 landscape;
     margin: 0;
   }
-  nav{
+  nav, .swal2-container{
       display: none;
   }  
   .table th{

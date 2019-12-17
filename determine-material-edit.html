@@ -20,6 +20,7 @@
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
   <link href="css/material-print.css" rel="stylesheet">
+  <link href="css/sweetalert2.css" rel="stylesheet">
 
 </head>
 
@@ -104,7 +105,7 @@
         <!-- Page Content -->
         <h1>กำหนดสูตรและคำนวนวัตถุดิบ</h1>
         <hr>
-        <p>ใส่ข้อมูลของ</p>
+        <p>กำหนด <strong>สูตรที่ใช้</strong> แล้วโปรแกรมจะคำนวนปริมาณของวัตถุดิบให้ <br>สามารถแก้ไขเพิ่มเติม <strong>จำนวนที่ต้องผลิต</strong> เพื่อกำหนดปริมาณวัตถุดิบเพิ่มเติมได้</p>
         </div>
         
         <!-- Example -->
@@ -123,9 +124,9 @@
               <div class="col-4 text-right">หมายเลขคำสั่งซื้อ <h5>#12620005</h5></div>
             </div>
             <div class="row p-3 mb-3 d-flex">
-              <div class="col-md-10 title text-right">วันที่ออกใบเบิกวัตถุดับ:</div> 
+              <div class="col-md-10 title text-right">วันที่ออกใบเบิกวัตถุดิบ:</div> 
               <div class="col-md-2 text-right pr-4" id="nowdate"></div>
-              <div class="col-md-10 title text-right">วันที่กำหนดส่งมอบ:</div> 
+              <div class="col-md-10 title text-right">กำหนดการจัดส่งสินค้า:</div> 
               <div class="col-md-2 text-right pr-4">28/12/2019</div>
             </div>
           </div>
@@ -134,8 +135,9 @@
               <i class="fas fa-table"></i>
               กำหนดรายละเอียดการผลิต
             </div>            
-            <div class="col-6">
-              <button type="button" class="btn btn-primary no-print" id="btn-print" onclick="window.print()">Print</button>
+            <div class="col-6">              
+              <button type="button" class="btn btn-success no-print" onclick="save()">Save</button>
+              <button type="button" class="btn btn-primary no-print mr-3" id="btn-print" onclick="save('print');">Save & Print</button>
             </div>
           </div>
           <page class="card-body">
@@ -144,7 +146,7 @@
                 <div class="row detail d-flex">
                   <div class="col-4 title text-right no-print">หมายเลขคำสั่งซื้อ:</div> 
                   <div class="col-8 no-print">12620013</div>
-                  <div class="col-4 title text-right no-print">กำหนดส่ง:</div> 
+                  <div class="col-4 title text-right no-print">กำหนดการจัดส่ง:</div> 
                   <div class="col-8 no-print">20/12/62</div>
                   <div class="col-4 title text-right">ชื่อ-สกุล:</div>
                   <div class="col-8"> สมชาย สมานฉันท์</div>
@@ -156,7 +158,8 @@
                   <div class="col-8">30000 ห่อ</div>
                   <div class="col-4 title text-right">สูตรที่ใช้:</div> 
                   <div class="col-8">
-                    <select class="form-control width-150">
+                    <select id="formula" class="form-control width-150">
+                      <option value="">-</option>
                       <option value="sn0">SN0</option>
                       <option value="sn1">SN1</option>
                       <option value="sn2" selected>SN2</option>                  
@@ -275,12 +278,45 @@
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin.js"></script>
   <script src="js/moment.min.js"></script>
+  <script src="js/sweetalert2.js"></script>
+
   <script>
 
     $(document).ready(function() {
       // set an element
       $("#nowdate").text( moment().format('DD/MM/YYYY') );
     });
+
+    function save(p){
+      if($("#formula").val()){
+        if(p){
+          Swal.fire({
+            title:'เสร็จสิ้น',
+            text:'ทำการ Update ข้อมูล',          
+            type: 'success'
+          }).then((result) => {
+            // TODO // insert date in DB
+            setTimeout(function(){ 
+                window.print();
+            }, 300);
+          });  
+        }
+        else{
+          Swal.fire({
+            title:'เสร็จสิ้น',
+            text:'ทำการ Update ข้อมูล',          
+            type: 'success'
+          });
+        }
+      }      
+      else{
+            Swal.fire(
+                'ผิดพลาด',
+                'เนื่องจากยังไม่ได้ใส่ <i>สูตรที่ใช้</i>',
+                'error'
+            );
+        }
+    }
   </script>
 </body>
 

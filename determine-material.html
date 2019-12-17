@@ -102,7 +102,6 @@
         <hr>
         <p>เลือกที่หมายเลขคำสั่งซื้อ เพื่อทำการกำหนดสูตร และปริมาณที่ต้องการผลิต เพื่อกำหนดวัตถุดิบที่ต้องใช้ในคำสั่งซื้อนั้น </p>
 
-
         <!-- DataTables Example -->
         <div class="card mb-3">
           <div class="card-header">
@@ -113,7 +112,7 @@
               <table class="table table-bordered" data-order='[[ 0, "desc" ]]' id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
-                    <th>วันที่จัดส่ง</th>
+                    <th>กำหนดการจัดส่ง</th>
                     <th>หมายเลขคำสั่งซื้อ</th>
                     <th>สถานะ</th>
                     <th>สูตรที่ใช้</th>
@@ -123,7 +122,7 @@
                 </thead>
                 <tfoot>
                   <tr>
-                    <th>วันที่จัดส่ง</th>
+                    <th>กำหนดการจัดส่ง</th>
                     <th>หมายเลขคำสั่งซื้อ</th>
                     <th>สถานะ</th>
                     <th>สูตรที่ใช้</th>
@@ -215,8 +214,15 @@
   <!-- Core plugin JavaScript-->
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
+  <!-- Page level plugin JavaScript-->
+  <script src="vendor/datatables/jquery.dataTables.js"></script>
+  <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin.js"></script>
+  
+  <!-- Demo scripts for this page-->
+  <script src="js/demo/datatables-demo.js"></script>
 
 </body>
 

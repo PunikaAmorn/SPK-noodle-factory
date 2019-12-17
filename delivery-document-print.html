@@ -4,13 +4,15 @@
     <link href="css/delivery-print.css" rel="stylesheet" type="text/css"></link href> 
     <!-- Calendar jquery -->  
     <link rel="stylesheet" type="text/css" href="vendor/datetimepicker/jquery.datetimepicker.min.css"/>
-  
+      <link href="css/sweetalert2.css" rel="stylesheet">
+
     <title>SPK - ออกใบส่งสินค้า</title>
     <body>
         <nav>
-            <button style='margin-right: 15px;' onclick="window.print()">Print</button>
+            <button class="btn btn-success" style='margin-right: 15px;' onclick="save()">Save</button>
+            <button onclick="save('print');">Save & Print</button>
             <!-- <button>Save to PDF</button> -->
-            <button style='float: left;margin-left:15px;' onclick="window.location.href='delivery-document.html'">Back</button>
+            <button class="btn btn-warning" style='float: left;margin-left:15px;' onclick="window.location.href='delivery-document.html'">Back</button class="btn btn-success">
         </nav>
         <page size="A5" layout="landscape">
             <div class="container">
@@ -24,7 +26,7 @@
                             (000-0000-000)
                         </p>
                     </div>
-                    <div class="col-4 text-right">หมายเลขคำสั่งซื้อ <h5>#12620005</h5></div>
+                    <div class="col-4 text-right">หมายเลขคำสั่งซื้อ <h5>#12620003</h5></div>
                 </div>
                 <div class="row">
                     <div class="col-7">
@@ -37,10 +39,10 @@
                     </div>
                     <div class="col-5">
                         <div class="row">
-                            <div class="col-md-6 title text-right">วันที่ส่งออก:</div> 
+                            <div class="col-md-6 title text-right">กำหนดการจัดส่ง:</div> 
+                            <div class="col-md-6 text-right pr-4">25/12/2019</div>
+                            <div class="col-md-6 title text-right">วันที่จัดส่ง:</div> 
                             <div class="col-md-6"><input type="text" class="date  form-control text-right datepicker" id="nowdate"></div>
-                            <div class="col-md-6 title text-right">วันที่ส่งมอบ:</div> 
-                            <div class="col-md-6 text-right pr-4">28/12/2019</div>
                         </div>
                     </div>
                 </div>
@@ -54,13 +56,13 @@
                             <tbody>
                                 <tr>
                                     <td>เส้นเล็กสูตร2</td>
-                                    <td>10000</td>
+                                    <td>50000</td>
                                 </tr>
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <td class="title text-center">รวม</td>
-                                    <td>10000</td>
+                                    <td>50000</td>
                                 </tr>
                             </tfoot>
                         </table>
@@ -80,6 +82,7 @@
   <!-- Calendar -->
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="vendor/datetimepicker/jquery.datetimepicker.full.js"></script>
+  <script src="js/sweetalert2.js"></script>
     
   <script>
       
@@ -92,5 +95,35 @@
     });
 
 
+    function save(p){
+        if($("#nowdate").val()){
+            if(p){
+                Swal.fire({
+                    title:'เสร็จสิ้น',
+                    text:'ทำการ Update วันที่จัดส่ง',
+                    type:'success'
+                }).then((result) => {
+                    // TODO // insert date in DB
+                    setTimeout(function(){ 
+                        window.print();
+                    }, 300);
+                }); 
+            }
+            else{
+                Swal.fire(
+                    'เสร็จสิ้น',
+                    'ทำการ Update วันที่จัดส่ง',
+                    'success'
+                );
+            }
+        }
+        else{
+            Swal.fire(
+                'ผิดพลาด',
+                'เนื่องจากยังไม่ได้ใส่ <i>วันที่จัดส่ง</i>',
+                'error'
+            );
+        }
+    }
     </script>
 </html>
