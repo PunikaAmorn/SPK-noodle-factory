@@ -570,6 +570,11 @@ pre code {
 .title {
   font-weight: 600;
 }
+.name-page{
+  width: 100%;
+  text-align: right;
+  color: white;
+}
 
 .border-1{
   border: 1px solid #728191;
@@ -585,6 +590,9 @@ pre code {
 
 .width-150{
   max-width:200px ;
+}
+.width-80{
+  max-width: 80%;
 }
 
 .detail div{
