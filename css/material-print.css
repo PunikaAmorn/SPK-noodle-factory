@@ -46,9 +46,13 @@ page[size="A4"] {
         display: none !important;
     }
 
-    input,select{
+    input,select, textarea{
         border: 0px solid #ffffff !important;
         font-size: 1.2rem !important;
+    }
+
+    textarea{        
+        resize: none;
     }
 
     .table{
@@ -70,6 +74,10 @@ page[size="A4"] {
     
     #header-report{
         display: block !important;
+    }
+
+    .border-gray-1{
+        border: 0px solid white;
     }
 }
 

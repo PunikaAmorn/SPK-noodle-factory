@@ -69,13 +69,13 @@
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>ตรวจสอบสถานะการผลิต</span>
           </a>
-      </li>       
-      <li class="nav-item" id="determine-material-nav">
+      </li>      
+      <li class="nav-item active" id="determine-material-nav">
           <a class="nav-link" href="determine-recipe.html">
           <i class="fas fa-fw fa-list-alt"></i>
           <span>การจัดการสูตรการผลิต</span></a>
       </li>  
-      <li class="nav-item active" id="determine-material-nav">
+      <li class="nav-item" id="determine-material-nav">
           <a class="nav-link" href="determine-material.html">
           <i class="fas fa-fw fa-list-alt"></i>
           <span>กำหนดวัตถุดิบ</span></a>
@@ -102,15 +102,18 @@
             <a href="check-status.html">การจัดการการผลิต</a>
           </li>
           <li class="breadcrumb-item active">
-            <a href="determine-material.html">กำหนดวัตถุดิบ</a>
+            <a href="determine-recipe.html">การจัดการสูตรการผลิต</a>
           </li>
-          <li class="breadcrumb-item active">กำหนดสูตรและคำนวนวัตถุดิบ</li>
+          <li class="breadcrumb-item active">กำหนดวัตถุดิบและวิธีการผลิต</li>
         </ol>
 
         <!-- Page Content -->
-        <h1>กำหนดสูตรและคำนวนวัตถุดิบ</h1>
+        <div class="d-flex justify-content-between">
+          <h1>กำหนดวัตถุดิบและวิธีการผลิต</h1>
+          <a class="btn btn-warning mt-auto mb-auto" href="determine-recipe.html"><i class="fas fa-fw fa-arrow-circle-left"></i>กลับ</a>
+        </div>
         <hr>
-        <p>กำหนด <strong>สูตรที่ใช้</strong> แล้วโปรแกรมจะคำนวนปริมาณของวัตถุดิบให้ <br>สามารถแก้ไขเพิ่มเติม <strong>จำนวนที่ต้องผลิต</strong> เพื่อกำหนดปริมาณวัตถุดิบเพิ่มเติมได้</p>
+        <p>กำหนด <strong>รหัสสูตร</strong> ที่จะสร้างหรือแก้ไข แล้วใส่วัตถุดิบ และปริมาณของวัตถุดิบของสูตรนั้น</p>
         </div>
         
         <!-- Example -->
@@ -126,19 +129,17 @@
                       (000-0000-000)
                   </p>
               </div>
-              <div class="col-4 text-right">หมายเลขคำสั่งซื้อ <h5>#12620005</h5></div>
+              <div class="col-4 text-right">วันที่แก้ไขล่าสุด <h5 id="nowdate"></h5></div>
             </div>
             <div class="row p-3 mb-3 d-flex">
-              <div class="col-md-10 title text-right">วันที่ออกใบเบิกวัตถุดิบ:</div> 
-              <div class="col-md-2 text-right pr-4" id="nowdate"></div>
-              <div class="col-md-10 title text-right">กำหนดการจัดส่งสินค้า:</div> 
-              <div class="col-md-2 text-right pr-4">28/12/2019</div>
+              <div class="col-md-10 title text-right">ผู้ทำการแก้ไขสูตร:</div> 
+              <div class="col-md-2 text-right pr-4">Admin</div>
             </div>
           </div>
           <div class="card-header d-flex">
             <div class="col-6">
               <i class="fas fa-table"></i>
-              กำหนดรายละเอียดการผลิต
+              กำหนดรายวัตถุดิบและวิธีการผลิต
             </div>            
             <div class="col-6">              
               <button type="button" class="btn btn-success no-print" onclick="save()">Save</button>
@@ -147,88 +148,56 @@
           </div>
           <page class="card-body">
             <div class="row d-flex">
-              <div class="col-6">
+              <div class="col-12">
                 <div class="row detail d-flex">
-                  <div class="col-4 title text-right no-print">หมายเลขคำสั่งซื้อ:</div> 
-                  <div class="col-8 no-print">12620013</div>
-                  <div class="col-4 title text-right no-print">กำหนดการจัดส่ง:</div> 
-                  <div class="col-8 no-print">20/12/62</div>
-                  <div class="col-4 title text-right">ชื่อ-สกุล:</div>
-                  <div class="col-8"> สมชาย สมานฉันท์</div>
-                  <div class="col-4 title text-right">ที่อยู่การจัดส่ง:</div> 
-                  <div class="col-8">XXXXXXXXXXXXXXXXXXXXXXX</div>
-                  <div class="col-4 title text-right">รายการสั่งซื้อ:</div> 
-                  <div class="col-8">เส้นเล็กสูตร2</div>
-                  <div class="col-4 title text-right">จำนวน:</div> 
-                  <div class="col-8">30000 ห่อ</div>
-                  <div class="col-4 title text-right">สูตรที่ใช้:</div> 
-                  <div class="col-8">
-                    <select id="formula" class="form-control width-150">
-                      <option value="">-</option>
-                      <option value="sn0">SN0</option>
-                      <option value="sn1">SN1</option>
-                      <option value="sn2" selected>SN2</option>                  
-                      <option value="sn3">SN3</option>     
-                      <option value="md1">MD1</option>
-                      <option value="md2">MD2</option>                  
-                      <option value="md3">MD3</option>                  
-                      <option value="lg1">LG1</option>               
-                      <option value="lg2">LG2</option>               
-                      <option value="lg3">LG3</option>               
-                      <option value="lg4">LG4</option>
-                    </select>
+                  <div class="col-3 title text-right">สูตรหมายเลข:</div> 
+                  <div class="col-9 "><input id="id" class="form-control" placeholder="รหัสสูตร"></div>
+                  <div class="col-3 title text-right ">ชื่อสูตร:</div> 
+                  <div class="col-9">
+                    <input id="name" class="form-control" placeholder="ชื่อของสูตร">
                   </div>
-                  <div class="col-4 title text-right">จำนวนที่ต้องผลิต:</div> 
-                  <div class="col-8"><input type="number" class="form-control width-150" id="total-material" value="30030"></div>
+                  <div class="col-3 title text-right ">รายละเอียดสูตร:</div> 
+                  <div class="col-9">
+                    <textarea class="form-control" id="detail" placeholder="รายละเอียด"></textarea>
+                  </div>
+                  <div class="col-3 title text-right">วัตถุดิบและจำนวนที่ใช้:</div> 
+                  <div class="col-9 d-flex"> 
+                    <div id="set-mat">
+                      <div class="border-gray-1 met-input" style="width:100%" id="mat-1">
+                        <div class="row">               
+                          <h6 class="col-2 text-right m-auto">วัตถุดิบ 1:</h6>
+                          <div class="col-4">
+                            <input class="form-control" id="material1" placeholder="วัตถุดิบ">
+                          </div>
+                          <h6 class="col-2 text-right m-auto p-0">จำนวน(kg) :</h6> 
+                          <div class="col-4 d-flex">                                          
+                            <input type="number" class="form-control" id="amount1">
+                            <div onclick="removeMat(this)" class="text-danger hover-gray font-size-30 m-0 ml-3 no-print"><i class="fas fa-fw fa-minus-square"></i></div>
+                          </div>
+                        </div>
+                      </div>  
+                    </div>              
+                    <div onclick="appendMat()" class="green hover-gray font-size-30 rb-coner no-print"><i class="fas fa-fw fa-plus-square"></i></div>
+                  </div>
                 </div>
               </div>
               
-              <div class="col-6 border-1">
-                <div class="col-12 title"><h5>วัตถุดิบที่ต้องใช้ทั้งหมด</h5></div>                 
-                <hr/>
-                <div class="col-12">
-                  <table class="table" style="width:100%">
-                    <thead>
-                      <th width='70%'>วัตถุดิบ</th>
-                      <th width='29%'>จำนวน(kg)</th>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>ข้าวสาลี</td>
-                        <td>150</td>
-                      </tr>
-                      <tr>
-                        <td>ข้าวไรซ์เบอรี่</td>
-                        <td>30</td>
-                      </tr>
-                      <tr>
-                        <td>น้ำ</td>
-                        <td>80</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>                 
-              </div> 
               <div class="col-12 mt-3">
-                <div class="col-12 title"><h5>อัตราส่วนและวิธีการทำ</h5></div>   
+                <div class="col-12 title"><h5>วิธีการทำ</h5></div>   
                 <hr/>
                 <div class="col-12">
-                  <ul>
-                    <li>......... ...</li>
-                    <li>......... ...</li>
-                    <li>......... ...</li>
-                    <li>......... ...</li>
-                  </ul>
-                </div> 
-                <div class="col-12">
-                  <ol >
-                    <li>..............</li>
-                    <li>..............</li>
-                    <li>..............</li>
-                    <li>..............</li>
-                    <li>..............</li>
-                    <li>..............</li>
+                  <ol id="step-recipe">
+                    <li id="li-step-1">
+                      <textarea  class="form-control mr-2" id="step1" placeholder="...">ขั้นตอนที่ 1 ...</textarea>
+                    </li> 
+                    <li id="li-step-2">
+                      <textarea  class="form-control mr-2" id="step2" placeholder="...">ขั้นตอนที่ 2 ...</textarea>
+                    </li>  
+                    <li id="li-step-3">
+                      <textarea  class="form-control mr-2" id="step3" placeholder="...">ขั้นตอนที่ 3 ...</textarea>
+                    </li>                     
                   </ol>
+                  <div onclick="appendStep()" class="green hover-gray font-size-30 m-auto"><i class="fas fa-fw fa-plus-square"></i></div>         
                 </div> 
               </div>
             </div>
@@ -294,7 +263,11 @@
     });
 
     function save(p){
-      if($("#formula").val()){
+      var id = $("#id").val();
+      var name = $("#name").val();
+      var detail = $("#detail").val();
+
+      if(id && name && detail){
         if(p){
           Swal.fire({
             title:'เสร็จสิ้น',
@@ -318,10 +291,42 @@
       else{
             Swal.fire(
                 'ผิดพลาด',
-                'เนื่องจากยังไม่ได้ใส่ <i>สูตรที่ใช้</i>',
+                'เนื่องจากใส่ข้อมูลไม่ครบถ้วน',
                 'error'
             );
         }
+    }
+
+
+    function appendMat(){
+        if($('#set-mat .met-input').length>0){var number =  parseInt($('#set-mat .met-input:last').attr("ID").split("-")[1], 10) + 1;}
+        else{ var number = 1}
+        var appendMatTxt = '<div class="border-gray-1 met-input" style="width:100%" id="mat-'+number+'">\
+                        <div class="row">               \
+                          <h6 class="col-md-2 text-right">วัตถุดิบ '+number+':</h6>\
+                          <div class="col-md-4">\
+                            <input class="form-control" id="material'+number+'" placeholder="วัตถุดิบ">\
+                          </div>\
+                          <h6 class="col-2 text-right m-auto p-0">จำนวน(kg) :</h6> \
+                          <div class="col-4 d-flex">\
+                            <input type="text" class="form-control" id="amount'+number+'" placeholder="0">\
+                            <div onclick="removeMat(this)" class="text-danger hover-gray font-size-30 m-0 ml-3 no-print"><i class="fas fa-fw fa-minus-square"></i></div>\
+                          </div>\
+                        </div>';
+        $('#set-mat').append(appendMatTxt);
+      }
+
+    function removeMat(This){
+      $(This).parent().parent().parent().remove();
+    }
+
+    function appendStep(){
+      if($('#step-recipe li').length>0){var number =  parseInt($('#step-recipe li:last').attr("ID").split("-")[2], 10) + 1;}
+      else{var number = 1;}
+      var textApp = '<li id="li-step-'+number+'">\
+                      <textarea  class="form-control mr-2" id="step'+number+'" placeholder="...">ขั้นตอนที่ '+number+' ...</textarea>\
+                    </li> ';
+      $('#step-recipe').append(textApp);
     }
   </script>
 </body>

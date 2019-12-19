@@ -68,12 +68,12 @@
           <span>ตรวจสอบสถานะการผลิต</span>
           </a>
       </li>      
-      <li class="nav-item" id="determine-material-nav">
+      <li class="nav-item active" id="determine-material-nav">
           <a class="nav-link" href="determine-recipe.html">
           <i class="fas fa-fw fa-list-alt"></i>
           <span>การจัดการสูตรการผลิต</span></a>
       </li>   
-      <li class="nav-item active" id="determine-material-nav">
+      <li class="nav-item" id="determine-material-nav">
           <a class="nav-link" href="determine-material.html">
           <i class="fas fa-fw fa-list-alt"></i>
           <span>กำหนดวัตถุดิบ</span></a>
@@ -99,13 +99,18 @@
           <li class="breadcrumb-item">
             <a href="check-status.html">การจัดการการผลิต</a>
           </li>
-          <li class="breadcrumb-item active">กำหนดวัตถุดิบ</li>
+          <li class="breadcrumb-item active">การจัดการสูตรการผลิต</li>
         </ol>
 
         <!-- Page Content -->
-        <h1>การกำหนดวัตถุดิบ</h1>
+        <div class="d-flex justify-content-between">
+          <h1>การจัดการสูตรการผลิต</h1>
+          <a class="btn btn-success mt-auto mb-auto" href="determine-recipe-create.html"><i class="fas fa-fw fa-plus-circle"></i>สร้างสูตรใหม่</a>
+        </div>
         <hr>
-        <p>เลือกที่หมายเลขคำสั่งซื้อ เพื่อทำการกำหนดสูตร และปริมาณที่ต้องการผลิต เพื่อกำหนดวัตถุดิบที่ต้องใช้ในคำสั่งซื้อนั้น </p>
+        <p>เลือกที่ปุ่ม <strong>สร้างสูตรใหม่</strong> ที่มุมขวาบน เพื่อทำการสร้างสูตรใหม่ หรือ<br>
+          กดที่ <strong>รหัสสูตร</strong> เพื่อทำการกำหนดวัตถุดิบและวิธีการผลิตของสูตรนั้น<br>
+          <strong>ระวัง!</strong> การทำการแก้ไขสูตรที่กำลังทำการผลิตอยู่อาจจะทำให้เกิดปัญหาระหว่างการผลิตได้ </p>
 
         <!-- DataTables Example -->
         <div class="card mb-3">
@@ -114,58 +119,101 @@
             ตรวจสอบสถานะการผลิต</div>
           <div class="card-body">
             <div class="table-responsive">
-              <table class="table table-bordered" data-order='[[ 0, "desc" ]]' id="dataTable" width="100%" cellspacing="0">
+              <table class="table table-bordered" data-order='[[ 0, "asc" ]]' id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
-                    <th>กำหนดการจัดส่ง</th>
-                    <th>หมายเลขคำสั่งซื้อ</th>
-                    <th>สถานะ</th>
-                    <th>สูตรที่ใช้</th>
-                    <th>จำนวนสั่งซื้อ</th>
-                    <th>ที่ต้องผลิต</th>
+                    <th>รหัสสูตร</th>
+                    <th>ชื่อสูตร</th>
+                    <th>รายละเอียดสูตร</th>
+                    <th>วันที่แก้ไขครั้งล่าสุด</th>
+                    <th>วันที่สร้าง</th>
                   </tr>
                 </thead>
                 <tfoot>
                   <tr>
-                    <th>กำหนดการจัดส่ง</th>
-                    <th>หมายเลขคำสั่งซื้อ</th>
-                    <th>สถานะ</th>
-                    <th>สูตรที่ใช้</th>
-                    <th>จำนวนสั่งซื้อ</th>
-                    <th>ที่ต้องผลิต</th>
+                    <th>รหัสสูตร</th>
+                    <th>ชื่อสูตร</th>
+                    <th>รายละเอียดสูตร</th>
+                    <th>วันที่แก้ไขครั้งล่าสุด</th>
+                    <th>วันที่สร้าง</th>
                   </tr>
                 </tfoot>
                 <tbody>                  
-                  <tr>               
-                    <td>20/12/2562</td>     
-                    <td><a href="determine-material-edit.html" target="_blank">12620013</a></td>
-                    <td><span class="badge badge-danger">ออเดอร์ใหม่</span></td>
-                    <td>-</td>
-                    <td>30000</td>
-                    <td>-</td>
+                  <tr>
+                    <td><a href="determine-recipe-edit.html">SN0</a></td>     
+                    <td>เส้นเล็กสูตร0</td>
+                    <td>รายละเอียดสูตร</td>
+                    <td>01/01/2549</td>
+                    <td>01/01/2549</td>
                   </tr>
-                  <tr>            
-                    <td>23/12/2562</td>      
-                    <td><a href="determine-material-edit.html" target="_blank">12620012</a></td>
-                    <td><span class="badge badge-danger">ออเดอร์ใหม่</span></td>
-                    <td>-</td>
-                    <td>50000</td>
-                    <td>-</td>
+                  <tr>
+                    <td><a href="determine-recipe-edit.html">SN1</a></td>  
+                    <td>เส้นเล็กสูตร1</td>
+                    <td>รายละเอียดสูตร</td>
+                    <td>01/01/2549</td>
+                    <td>01/01/2549</td>
                   <tr>              
-                    <td>15/12/2562</td>      
-                    <td><a href="determine-material-edit.html" target="_blank">12620011</a></td>
-                    <td><span class="badge badge-danger">ออเดอร์ใหม่</span></td>
-                    <td>MD3</td>
-                    <td>3000</td>
-                    <td>3003</td>
+                    <td><a href="determine-recipe-edit.html">SN2</a></td>   
+                    <td>เส้นเล็กสูตร2</td>
+                    <td>รายละเอียดสูตร</td>
+                    <td>01/01/2549</td>
+                    <td>01/01/2549</td>
                   </tr>
                   <tr>       
-                    <td>15/12/2562</td>       
-                    <td><a href="determine-material-edit.html" target="_blank">12620010</a></td>
-                    <td><span class="badge badge-danger">ออเดอร์ใหม่</span></td>
-                    <td>SN2</td>
-                    <td>5000</td>
-                    <td>5005</td>
+                    <td><a href="determine-recipe-edit.html">SN3</a></td>
+                    <td>เส้นเล็กสูตร3</td>
+                    <td>รายละเอียดสูตร</td>
+                    <td>01/01/2549</td>
+                    <td>01/01/2549</td>
+                  </tr>
+                  <tr>       
+                    <td><a href="determine-recipe-edit.html">MD1</a></td>
+                    <td>วุ้นเส้นสูตร1</td>
+                    <td>รายละเอียดสูตร</td>
+                    <td>01/01/2549</td>
+                    <td>01/01/2549</td>
+                  </tr>
+                  <tr>       
+                    <td><a href="determine-recipe-edit.html">MD2</a></td>
+                    <td>วุ้นเส้นสูตร2</td>
+                    <td>รายละเอียดสูตร</td>
+                    <td>01/01/2549</td>
+                    <td>01/01/2549</td>
+                  </tr>
+                  <tr>       
+                    <td><a href="determine-recipe-edit.html">MD3</a></td>
+                    <td>วุ้นเส้นสูตร3</td>
+                    <td>รายละเอียดสูตร</td>
+                    <td>01/01/2549</td>
+                    <td>01/01/2549</td>
+                  </tr>
+                  <tr>       
+                    <td><a href="determine-recipe-edit.html">LG1</a></td>
+                    <td>เส้นใหญ่สูตร1</td>
+                    <td>รายละเอียดสูตร</td>
+                    <td>01/01/2549</td>
+                    <td>01/01/2549</td>
+                  </tr>
+                  <tr>       
+                    <td><a href="determine-recipe-edit.html">LG2</a></td>
+                    <td>เส้นใหญ่สูตร2</td>
+                    <td>รายละเอียดสูตร</td>
+                    <td>01/01/2549</td>
+                    <td>01/01/2549</td>
+                  </tr>
+                  <tr>       
+                    <td><a href="determine-recipe-edit.html">LG3</a></td>
+                    <td>เส้นใหญ่สูตร3</td>
+                    <td>รายละเอียดสูตร</td>
+                    <td>01/01/2549</td>
+                    <td>01/01/2549</td>
+                  </tr>
+                  <tr>       
+                    <td><a href="determine-recipe-edit.html">LG4</a></td>
+                    <td>เส้นใหญ่สูตร4</td>
+                    <td>รายละเอียดสูตร</td>
+                    <td>01/01/2549</td>
+                    <td>01/01/2549</td>
                   </tr>
                 </tbody>
               </table>

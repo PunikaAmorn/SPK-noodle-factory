@@ -41,7 +41,12 @@
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>ตรวจสอบสถานะการผลิต</span>
           </a>
-      </li>      
+      </li>    
+      <li class="nav-item" id="determine-material-nav">
+          <a class="nav-link" href="determine-recipe.html">
+          <i class="fas fa-fw fa-list-alt"></i>
+          <span>การจัดการสูตรการผลิต</span></a>
+      </li>     
       <li class="nav-item" id="determine-material-nav">
           <a class="nav-link" href="determine-material.html">
           <i class="fas fa-fw fa-list-alt"></i>
@@ -131,15 +136,16 @@
                     </div>    
                     <div class="row"> 
                         <h6 class="col-md-3 text-right">วันเวลาที่ผลิต :</h6> 
-                        <div class="col-md-9 d-flex">                                          
+                        <div class="col-md-8 d-flex">                                          
                           <input type="text" class="width-150 form-control datepicker mr-2" id="dateStart">
                           _                    
                           <input type="text" class="width-150 form-control datepicker ml-2" id="dateEnd">
                         </div>
-                    </div>
+                        <div onclick="removeMat(this)" class="col-md-1 text-danger hover-gray font-size-30 p-0"><i class="fas fa-fw fa-minus-square"></i></div>
+                      </div>
                   </div>  
                 </div>              
-                <div onclick="appendMac()" class="green hover-gray font-size-30 m-auto"><i class="fas fa-fw fa-plus-square"></i></div>            
+                <div onclick="appendMac()" class="green hover-gray font-size-30 rb-coner-80"><i class="fas fa-fw fa-plus-square"></i></div>            
               </div>   
           </div>              
         </div>
@@ -240,7 +246,8 @@
       scheduler.parse(events, "json"); 
 
       function appendMac(){
-        var number = $('#select-mac').find('.mac-sel').length+1;
+        if($('#select-mac .mac-sel').length>0){var number = parseInt($('#select-mac .mac-sel:last').attr("ID").split("-")[1], 10) + 1;}
+        else{ var number = 1}
         var appendMacTxt = '<div class="border-gray-1 mac-sel" id="mac-'+number+'">\
                   <div class="row">               \
                     <h6 class="col-md-3 text-right">เครื่องที่ '+number+' :</h6>\
@@ -262,11 +269,12 @@
                   </div>\
                   <div class="row"> \
                       <h6 class="col-md-3 text-right">วันเวลาที่ผลิต :</h6> \
-                      <div class="col-md-9 d-flex">\
+                      <div class="col-md-8 d-flex">\
                         <input type="text" class="width-150 form-control datepicker mr-2" id="dateStart">\
                         _                    \
                         <input type="text" class="width-150 form-control datepicker ml-2" id="dateEnd">\
                       </div>\
+                      <div onclick="removeMat(this)" class="col-md-1 text-danger hover-gray font-size-30 p-0"><i class="fas fa-fw fa-minus-square"></i></div>\
                   </div>\
                 </div>';
         $('#select-mac').append(appendMacTxt);
@@ -275,6 +283,10 @@
           timepicker:true,
           datepicker:true
         });
+      }
+      
+      function removeMat(This){
+        $(This).parent().parent().remove();
       }
 
       function clearForm(){
