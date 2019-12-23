@@ -33,17 +33,22 @@
      
         <!-- Navbar -->
         <ul class="navbar-nav mx-auto ">     
-          <li class="nav-item dropdown no-arrow">
+          <li class="nav-item dropdown no-arrow active">
             <a class="nav-link dropdown-toggle" href="verify-product-table.html"  role="button">
               แสดงเป็นตาราง
             </a>
           </li>    
-          <li class="nav-item dropdown no-arrow active">
+          <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="verify-product.html"  role="button">
               แสดงงานเดียว
             </a>
           </li>  
         </ul>
+        <!-- Navbar Search -->
+        <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+          <div class="input-group d-none">           
+          </div>
+        </form>
     
         <!-- Navbar -->
         <ul class="navbar-nav ml-auto ml-md-0">         
@@ -69,37 +74,123 @@
         
         <!-- Page Content -->
         <div class="row">
-            <div class="col-4"><h1>ตรวจสอบคุณภาพ</h1></div>
-            <div class="col-8">
-                <div class="row"> 
-                    <h6 class="col-md-9 text-right">หมายเลขคำสั่งซื้อ :</h6> 
-                    <div class="col-md-3 d-flex">                                          
-                    <input type="text" class="width-150 form-control mr-2" id="orderId" value="12620009" focus>
-                    </div>
-                </div>
-                <div class="row"> 
-                    <h6 class="col-md-9 text-right">Lot No. :</h6> 
-                    <div class="col-md-3 d-flex">                                          
-                      <input type="text" class="width-150 form-control mr-2" id="lotNo" value="002">
-                    </div>
-                </div>
+            <div class="col-12"><h1>ตรวจสอบคุณภาพ</h1></div>
+            <div class="col-6">
+              <button class="btn btn-success btn-lg" title="Approve" onclick="approve()"><i class="fas fa-check-circle"></i> อนุมัติ</button>
+            </div>
+            <div class="col-6 text-right">
+              <button class="btn btn-danger btn-lg" title="Reject" data-toggle="modal" data-target="#rejectModal" ><i class="fas fa-times-circle"></i> ปฏิเสธ</button>
             </div>
         </div>
         <hr>
-        <div class="row">
-            <div class="col-6">
-                <p class="text-center">เลือก Reject ปุ่มสีแดง เมื่อพวกว่าไม่ได้คุณภาพตามที่กำหนด <br>พร้อมใส่ปริมาณที่ชำรุด และหมายเหตุกำกับ</p>
-                <div class="verify reject-btn" title="Reject" data-toggle="modal" data-target="#rejectModal" ><i class="fas fa-times-circle"></i></div>
-            </div>
-            <div class="col-6">
-                <p class="text-center">เลือก Approve ปุ่มสีเขียวเมื่อทำการตรวจสอบแล้วผ่านคุณภาพ</p>
-                <div class="verify approve-btn" title="Approve" onclick="approve()"><i class="fas fa-check-circle"></i></div>
-            </div>
-        </div>
         
-
+        <div class="mb-3">
+          <div class="card-body">            
+            <div class="table-responsive">
+              <table class="table table-bordered" data-order='[[ 0, "desc" ]]' id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>หมายเลขคำสั่งซื้อ</th>
+                    <th>เลขที่ Lot.</th>
+                    <th>หมายเลขสินค้าที่สุ่มตรวจ</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th></th>
+                    <th>หมายเลขคำสั่งซื้อ</th>
+                    <th>เลขที่ Lot.</th>
+                    <th>หมายเลขสินค้าที่สุ่มตรวจ</th>
+                  </tr>
+                </tfoot>
+                <tbody>
+                  <tr>    
+                    <td>
+                      <input type="checkbox" class="form-control">
+                    </td>                
+                    <td>12620018</td>
+                    <td>0001</td>
+                    <td>12345</td>
+                  </tr>
+                  <tr>    
+                    <td>
+                      <input type="checkbox" class="form-control">
+                    </td>                
+                    <td>12620018</td>
+                    <td>0003</td>
+                    <td>12885</td>
+                  </tr>
+                  <tr>    
+                    <td>
+                      <input type="checkbox" class="form-control">
+                    </td>                
+                    <td>12620018</td>
+                    <td>0004</td>
+                    <td>10045</td>
+                  </tr>
+                  <tr>    
+                    <td>
+                      <input type="checkbox" class="form-control">
+                    </td>                
+                    <td>12620019</td>
+                    <td>0001</td>
+                    <td>12555</td>
+                  </tr>
+                  <tr>    
+                    <td>
+                      <input type="checkbox" class="form-control">
+                    </td>                
+                    <td>12620019</td>
+                    <td>0002</td>
+                    <td>10045</td>
+                  </tr>
+                  <tr>    
+                    <td>
+                      <input type="checkbox" class="form-control">
+                    </td>                
+                    <td>12620019</td>
+                    <td>0003</td>
+                    <td>10145</td>
+                  </tr>
+                  <tr>    
+                    <td>
+                      <input type="checkbox" class="form-control">
+                    </td>                
+                    <td>12620019</td>
+                    <td>0005</td>
+                    <td>12301</td>
+                  </tr>
+                  <tr>    
+                    <td>
+                      <input type="checkbox" class="form-control">
+                    </td>                
+                    <td>12620020</td>
+                    <td>0001</td>
+                    <td>12345</td>
+                  </tr>
+                  <tr>    
+                    <td>
+                      <input type="checkbox" class="form-control">
+                    </td>                
+                    <td>12620020</td>
+                    <td>0002</td>
+                    <td>10005</td>
+                  </tr>
+                  <tr>    
+                    <td>
+                      <input type="checkbox" class="form-control">
+                    </td>                
+                    <td>12620020</td>
+                    <td>0003</td>
+                    <td>12245</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
-      <!-- /.container-fluid -->
 
       <!-- Sticky Footer -->
       <footer class="sticky-footer">
@@ -152,13 +243,9 @@
         </div>
         <div class="modal-body">
             <div class="row"> 
-                <div class="col-md-3 title text-right mt-2">หมายเลขคำสั่งซื้อ :</div> 
-                <div class="col-md-9 d-flex mt-2">                                          
-                    <input type="text" class="width-150 form-control mr-2" id="reject-orderId" value="12620009" focus>
-                </div>
-                <div class="col-md-3 title text-right mt-2">Lot No. :</div> 
-                <div class="col-md-9 d-flex mt-2">                                          
-                  <input type="text" class="width-150 form-control mr-2" id="reject-lotNo" value="002">
+                <div class="col-md-12 title mt-2">หมายเลขคำสั่งซื้อ:Lot No. :</div> 
+                <div class="col-md-12 d-flex mt-2">                                          
+                  <textarea class="form-control">12620018:002, 12620019:001</textarea>
                 </div>
                 <div class="col-md-3 title text-right mt-2">จำนวนที่ชำรุด :</div> 
                 <div class="col-md-9 d-flex mt-2">                                          
@@ -191,11 +278,9 @@
 
   <script>
       function reject(){
-        var orderId = $("#reject-orderId").val();
-        var lotNo = $("#reject-lotNo").val();
         var broken = $("#broken").val();
         var remark = $("#remark").val();
-          if(orderId && lotNo && broken && remark){
+          if(broken && remark){
               // TODO // Insert infomation in DB
             Swal.fire({
                 title:'เสร็จสิ้น',
@@ -214,8 +299,8 @@
       }
 
       function approve(){
-        var orderId = $("#orderId").val();
-        var lotNo = $("#lotNo").val();
+        var orderId = true;
+        var lotNo = true;
           if(orderId && lotNo){
               // TODO // Insert infomation in DB
             Swal.fire({
