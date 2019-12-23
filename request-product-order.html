@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SPK - รายละเอียดและสถานะการผลิต</title>
+  <title>SPK - ขอคำสั่งการผลิตเพิ่มเติม</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -64,7 +64,7 @@
 
     <!-- Sidebar -->
     <ul class="sidebar navbar-nav">
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="product-process.html">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>กระบวนการผลิต</span>
@@ -84,13 +84,16 @@
           <li class="breadcrumb-item">
             <a href="product-process.html">สถานะการผลิต</a>
           </li>          
-          <li class="breadcrumb-item">อัพเดทสถานะการผลิต</li>
+          <li class="breadcrumb-item">
+            <a href="set-order-status.html">อัพเดทสถานะการผลิต</a>
+          </li>
+          <li class="breadcrumb-item">ขอคำสั่งการผลิตเพิ่มเติม</li>
         </ol>
 
         <!-- Page Content -->
-        <h1>รายละเอียดและสถานะการผลิต</h1>
+        <h1>ขอคำสั่งการผลิตเพิ่มเติม</h1>
         <hr>
-        <p>เปลี่ยนสถานะของคำสั่งซื้อ</p>
+        <p>การขอเบิกวัตถุดิบเพิ่มเติม และทำรายงานการผลิด</p>
         </div>
         
         <!-- Example -->
@@ -123,12 +126,11 @@
             <div class="col-6">              
               <button type="button" class="btn btn-success no-print" onclick="save()">Save</button>
               <button type="button" class="btn btn-primary no-print mr-3" id="btn-print" onclick="save('print');">Save & Print</button>
-              <button type="button" class="btn btn-warning no-print mr-3" id="btn-print" onclick="window.location.href='request-product-order.html'">ขอคำสั่งผลิตสินค้าเพิ่มเติม</button>
             </div>
           </div>
           <page class="card-body">
             <div class="row d-flex">
-              <div class="col-12">
+              <div class="col-6">
                 <div class="row detail d-flex">
                   <div class="col-4 title text-right no-print">หมายเลขคำสั่งซื้อ:</div> 
                   <div class="col-8 no-print">12620011</div>
@@ -149,16 +151,47 @@
                   <div class="col-4 title text-right">ผลิตแล้ว:</div> 
                   <div class="col-8">0</div>
                   <div class="col-4 title text-right">สถานะการผลิต:</div>
+                  <div class="col-8">ตรวจสอบสินค้า</div>
+                  <div class="col-4 title text-right">ขอผลิตเพิ่มเติม
+                    <span class="badge badge-warning p-1"><i class="fas fa-exclamation-triangle"></i></span>:</div> 
                   <div class="col-8">
-                    <select id="status" class="form-control width-150">
-                      <option value="">-</option>
-                      <option value="0" selected>ออเดอร์ใหม่</option>
-                      <option value="1">กำลังผลิต</option>
-                      <option value="2">ตรวจสอบสินค้า</option>   
-                      <option value="3">รอจัดส่ง</option>   
-                    </select>
+                    <input type="number" class="form-control width-150" id="total-material" value="0">
                   </div>
                 </div>
+              </div>
+              
+              <div class="col-6 border-1">
+                <div class="col-12 title"><h5>วัตถุดิบที่ขอเบิกเพิ่มเติม</h5></div>                 
+                <hr/>
+                <div class="col-12">
+                  <table class="table" style="width:100%">
+                    <thead>
+                      <th width='70%'>วัตถุดิบ</th>
+                      <th width='29%'>จำนวน(kg)</th>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>ข้าวสาลี</td>
+                        <td>10</td>
+                      </tr>
+                      <tr>
+                        <td>ข้าวไรซ์เบอรี่</td>
+                        <td>3</td>
+                      </tr>
+                      <tr>
+                        <td>น้ำ</td>
+                        <td>2</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>                 
+              </div> 
+              <div class="col-12 mt-3">
+                <div class="col-12 title"><h5>หมายเหตุ</h5></div>   
+                <hr/>
+                <div class="col-12">
+                  <textarea id="remark" class="form-control" placeholder="-"></textarea>
+                </div> 
               </div>
             </div>
           </page>
@@ -223,34 +256,26 @@
     });
 
     function save(p){
-      if($("#status").val()){
-        if(p){
-          Swal.fire({
-            title:'เสร็จสิ้น',
-            text:'ทำการ Update ข้อมูล',          
-            type: 'success'
-          }).then((result) => {
-            // TODO // insert date in DB
-            setTimeout(function(){ 
-                window.print();
-            }, 300);
-          });  
-        }
-        else{
-          Swal.fire({
-            title:'เสร็จสิ้น',
-            text:'ทำการ Update ข้อมูล',          
-            type: 'success'
-          });
-        }
-      }      
+      if(p){
+        Swal.fire({
+          title:'เสร็จสิ้น',
+          text:'ทำการ Update ข้อมูล',          
+          type: 'success'
+        }).then((result) => {
+          // TODO // insert date in DB
+          setTimeout(function(){ 
+              window.print();
+          }, 300);
+        });  
+      }
       else{
-            Swal.fire(
-                'ผิดพลาด',
-                'เนื่องจากยังไม่ได้กำหนด <i>สถานะ</i>',
-                'error'
-            );
-        }
+        Swal.fire({
+          title:'เสร็จสิ้น',
+          text:'ทำการ Update ข้อมูล',          
+          type: 'success'
+        });
+        
+      }     
     }
   </script>
 </body>

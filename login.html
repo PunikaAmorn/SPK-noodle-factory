@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SPK - Admin & Chief Login</title>
+  <title>SPK - Chief & Manager Login</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -32,15 +32,14 @@
           <i class="fas fas fa-bars fa-fw"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-          <a class="dropdown-item" href="index.html" >Admin & Chief</a>
+          <a class="dropdown-item" href="index.html" >Chief & Manager</a>
           <a class="dropdown-item" href="check-in.html" >Staff</a>
         </div>
       </li>
     </ul>
-    <h2 class="name-page">Admin & Chief Login</h2>
+    <h2 class="name-page">Chief & Manager Login</h2>
 
   </nav>
-
 
   <div class="container">
     <div class="card card-login mx-auto mt-5">
@@ -89,7 +88,7 @@
       var username = $("#inputUsername").val();
       var password = $("#inputPassword").val();
       
-      if(username == "admin"){
+      if(username == "chief"){
         if(password == "password"){
           window.location.href = 'check-status.html';
         }
@@ -102,7 +101,7 @@
           $('#inputPassword').focus();
         }
       }
-      else if (username == "chief"){
+      else if (username == "manager"){
         if(password == "password"){
           window.location.href = 'product-process.html';
         }
