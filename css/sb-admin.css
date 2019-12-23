@@ -594,6 +594,9 @@ pre code {
 .width-80{
   max-width: 80%;
 }
+.width-100{
+  width: 100%;
+}
 
 .detail div{
   margin-top: 5px;

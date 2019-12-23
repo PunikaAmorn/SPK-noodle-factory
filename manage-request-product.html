@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SPK - การจัดการการผลิต</title>
+  <title>SPK - การจัดการขอคำสั่งการผลิตเพิ่มเติม</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -19,6 +19,7 @@
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
+  <link href="css/sweetalert2.css" rel="stylesheet">
 
 </head>
 
@@ -26,7 +27,7 @@
 
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-    <a class="navbar-brand mr-1" href="check-status.html">SPK : การจัดการการผลิต</a>
+    <a class="navbar-brand mr-1" href="check-status.html">SPK : การจัดการขอคำสั่งการผลิตเพิ่มเติม</a>
 
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
       <i class="fas fa-bars"></i>
@@ -106,62 +107,6 @@
           <li class="breadcrumb-item active">รายละเอียดคำสั่งซื้อ</li>
         </ol>
 
-        <!-- Icon Cards-->
-        <div class="row">
-          <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-primary o-hidden h-100">
-              <div class="card-body">
-                <div class="card-body-icon">
-                  <i class="fas fa-fw fa-boxes"></i>
-                </div>
-                <div class="mr-5">ผลิตไปแล้วทั้งหมด(รวมชำรุด)!</div>
-              </div>
-              <div class="card-footer text-white clearfix small z-1">
-                <h6 class="float-left">5000</h6>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-danger o-hidden h-100">
-              <div class="card-body">
-                <div class="card-body-icon">
-                  <i class="fas fa-fw fa-cogs"></i>
-                </div>
-                <div class="mr-5">สินค้าที่ยังขาด!</div>
-              </div>
-              <div class="card-footer text-white clearfix small z-1">
-                <h6 class="float-left">5007</h6>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-secondary o-hidden h-100">
-              <div class="card-body">
-                <div class="card-body-icon">
-                  <i class="fas fa-fw fa-times-circle"></i>
-                </div>
-                <div class="mr-5">จำนวนที่ชำรุด!</div>
-              </div>
-              <div class="card-footer text-white clearfix small z-1">
-                <h6 class="float-left">7</h6>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-warning o-hidden h-100">
-              <div class="card-body">
-                <div class="card-body-icon">
-                  <i class="fas fa-fw fa-exclamation-triangle"></i>
-                </div>
-                <div class="mr-5">คำขอคำสั่งการผลิตเพิ่มเติม</div>
-              </div>
-              <a href="manage-request-product.html" class="card-footer text-white clearfix small z-1">
-                <h6 class="float-left">1</h6>
-              </a>
-            </div>
-          </div>
-        </div>       
-
         <!-- DataTables Example -->
         <div class="card mb-3">
           <div class="card-header">
@@ -195,6 +140,10 @@
                         <div class="col-md-3 text-right">สูตรที่ใช้:</div> 
                         <div class="col-md-9">SN2</div>
                       </div>
+                      <div class="col-md-4 d-flex">
+                        <div class="col-md-6 text-right">จำนวนที่ต้องผลิต:</div> 
+                        <div class="col-md-6">30003 ห่อ</div>
+                      </div>
                       <div class="col-md-12 d-flex">
                         <div class="col-md-2 text-right">ที่อยู่การจัดส่ง:</div> 
                         <div class="col-md-10">XXXXXXXXXXXXXXXXXXXXXXX</div>
@@ -208,64 +157,49 @@
               <table class="table table-bordered" data-order='[[ 0, "desc" ]]' id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
+                    <th></th>
                     <th>วันที่</th>
-                    <th>สถานะ</th>
-                    <th>จำนวนที่ผลิต</th>
-                    <th>ชำรุด</th>
+                    <th>ขอผลิตเพิ่มเติม</th>
+                    <th>วัตถุดิบที่ขอเบิกเพิ่มเติม</th>                    
                     <th>หมายเหตุ</th>
                   </tr>
                 </thead>
                 <tfoot>
                   <tr>
+                    <th></th>
                     <th>วันที่</th>
-                    <th>สถานะ</th>
-                    <th>จำนวนที่ผลิต</th>
-                    <th>ชำรุด</th>
+                    <th>ขอผลิตเพิ่มเติม</th>
+                    <th>วัตถุดิบที่ขอเบิกเพิ่มเติม</th>      
                     <th>หมายเหตุ</th>
                   </tr>
                 </tfoot>
                 <tbody>
-                  <tr>                    
+                  <tr>    
+                    <td>
+                      <button type="button" class="btn btn-danger mr-3" title="Reject" data-toggle="modal" data-target="#rejectModal">Reject</button>
+                      <button type="button" class="btn btn-success" onclick="approve()">Approve</button>
+                    </td>                
                     <td>21/12/2562</td>
-                    <td><span class="badge badge-warning">กำลังผลิต</span></td>
-                    <td>2000</td>
-                    <td>0</td>
-                    <td>-</td>
-                  </tr>
-                  <tr>                    
-                    <td>21/12/2562</td>
-                    <td><span class="badge badge-info">ตรวจสอบสินค้า</span></td>
-                    <td>2000</td>
-                    <td>5</td>
-                    <td>พัสดุเสียหาย</td>
-                  </tr>
-                  <tr>                    
-                    <td>20/12/2562</td>
-                    <td><span class="badge badge-warning">กำลังผลิต</span></td>
-                    <td>2000</td>
-                    <td>0</td>
-                    <td>-</td>
-                  </tr>
-                  <tr>                    
-                    <td>20/12/2562</td>
-                    <td><span class="badge badge-info">ตรวจสอบสินค้า</span></td>
-                    <td>1000</td>
-                    <td>2</td>
-                    <td>ปริมาณไม่ตรงตามมาตรฐาน</td>
-                  </tr>
-                  <tr>                    
-                    <td>19/12/2562</td>
-                    <td><span class="badge badge-warning">กำลังผลิต</span></td>
-                    <td>1000</td>
-                    <td>0</td>
-                    <td>-</td>
-                  </tr>
-                  <tr>                    
-                    <td>18/12/2562</td>
-                    <td><span class="badge badge-danger">ออเดอร์ใหม่</span></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>-</td>
+                    <td>100</td>
+                    <td>
+                      <table class="width-100">
+                        <tbody>
+                          <tr>
+                            <td>ข้าวสาลี</td>
+                            <td>10</td>
+                          </tr>
+                          <tr>
+                            <td>ข้าวไรซ์เบอรี่</td>
+                            <td>3</td>
+                          </tr>
+                          <tr>
+                            <td>น้ำ</td>
+                            <td>2</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                    <td>ชำรุดไม่เพียงพอในการส่ง</td>
                   </tr>
                 </tbody>
               </table>
@@ -310,6 +244,36 @@
     </div>
   </div>
 
+    <!-- reject Modal-->
+    <div class="modal fade" id="rejectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-danger">
+            <h5 class="modal-title text-white" id="exampleModalLabel">Reject</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <div class="row"> 
+                  <div class="col-md-3 title text-right mt-2">หมายเลขคำสั่งซื้อ :</div> 
+                  <div class="col-md-9 d-flex mt-2">                                          
+                      <input type="text" class="width-150 form-control mr-2" id="reject-orderId" value="12620009" focus>
+                  </div>
+                  <div class="col-md-3 title text-right mt-2">หมายเหตุ :</div> 
+                  <div class="col-md-9 d-flex mt-2">                                          
+                    <textarea class="form-control mr-2 height-150" id="remark" ></textarea>
+                  </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">ยกเลิก</button>
+              <div class="btn btn-danger" onclick="reject()">ยืนยัน</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -328,11 +292,42 @@
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin.js"></script>
+  <script src="js/sweetalert2.js"></script>
 
   <!-- Demo scripts for this page-->
   <script src="js/demo/datatables-demo.js"></script>
   <script src="js/demo/chart-area-demo.js"></script>
 
+  <script>
+     function reject(){
+        var orderId = $("#reject-orderId").val();
+        var remark = $("#remark").val();
+          if(orderId && remark){
+              // TODO // Insert infomation in DB
+            Swal.fire({
+                title:'เสร็จสิ้น',
+                text:'ทำการส่งข้อมูลแล้ว',          
+                type: 'success',
+                timer: 1000,
+            }).then(result => {$('#rejectModal').modal('hide');});
+          }
+          else{
+            Swal.fire(
+                'ผิดพลาด',
+                'กรุณาใส่ข้อมูลให้ครบถ้วน',
+                'error'
+            );
+          }
+     }   
+
+    function approve(){
+        Swal.fire({
+          title:'เสร็จสิ้น',
+          text:'ทำการ Update ข้อมูล',          
+          type: 'success'
+        });  
+    }
+  </script>
 </body>
 
 </html>
